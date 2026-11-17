@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M. Faiq Irsyad Ramadhan | Network Technician & Japanese Language Learner</title>
+<meta name="description" content="Personal portfolio of M. Faiq Irsyad Ramadhan, a network technician and Japanese language learner from Blitar, Indonesia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1f3a;
+  --navy-2:#132d52;
+  --accent:#e5484d;      /* soft red, a nod to Japan */
+  --accent-dark:#c93a3f;
+  --white:#ffffff;
+  --bg:#f5f7fb;
+  --text:#1d2b3f;
+  --muted:#5b6b82;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(11,31,58,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:16px}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25;color:var(--navy)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.container{width:min(1100px,92%);margin-inline:auto}
+section{padding:80px 0}
+.section-title{font-size:clamp(1.7rem,4vw,2.3rem);margin-bottom:10px}
+.section-title::after{content:"";display:block;width:56px;height:4px;border-radius:4px;background:var(--accent);margin-top:10px}
+.section-sub{color:var(--muted);margin:14px 0 36px;max-width:640px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:100;background:rgba(11,31,58,.95);backdrop-filter:blur(8px);box-shadow:0 2px 14px rgba(0,0,0,.2)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Poppins',sans-serif;font-weight:700;color:var(--white);text-decoration:none;font-size:1.1rem}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav ul a{color:#dbe4f3;text-decoration:none;font-weight:500;font-size:.95rem;padding:6px 0;border-bottom:2px solid transparent;transition:.25s}
+.nav ul a:hover,.nav ul a.active{color:var(--white);border-color:var(--accent)}
+.burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px}
+.burger span{display:block;height:3px;width:24px;background:var(--white);margin:5px auto;border-radius:3px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;color:var(--white);padding-top:110px;
+  background:radial-gradient(circle at 85% 20%,rgba(229,72,77,.25),transparent 40%),linear-gradient(135deg,var(--navy),var(--navy-2))}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero .hello{color:#ffb3b5;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem}
+.hero h1{color:var(--white);font-size:clamp(2.1rem,6vw,3.6rem);margin:10px 0}
+.hero h1 span{color:var(--accent)}
+.hero .tagline{font-size:clamp(1.05rem,2.5vw,1.3rem);color:#cfdbef;margin-bottom:14px;font-weight:500}
+.hero p.intro{color:#b9c8e0;max-width:560px;margin-bottom:30px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;padding:13px 28px;border-radius:50px;font-weight:600;text-decoration:none;border:2px solid var(--accent);cursor:pointer;font-family:inherit;font-size:1rem;transition:.25s}
+.btn-primary{background:var(--accent);color:var(--white)}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white)}
+.btn-outline:hover{background:var(--white);color:var(--navy);border-color:var(--white);transform:translateY(-2px)}
+.hero-photo{justify-self:center;width:min(320px,80%);aspect-ratio:1;border-radius:50%;overflow:hidden;border:6px solid rgba(255,255,255,.15);box-shadow:0 20px 50px rgba(0,0,0,.35);background:var(--navy-2)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:30px}
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px;transition:.3s}
+.facts{list-style:none;display:grid;gap:12px;margin-top:6px}
+.facts li{display:flex;gap:10px}
+.facts b{min-width:88px;color:var(--navy)}
+.brand-statement{background:var(--navy);color:var(--white);border-left:6px solid var(--accent)}
+.brand-statement h3{color:var(--white);margin-bottom:10px}
+.brand-statement p{color:#d3def0;font-style:italic}
+
+/* SKILLS */
+.skills-block{margin-bottom:64px}
+.skills-block h3{font-size:1.4rem;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.skills-block h3 .jp{color:var(--accent)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:28px}
+figure{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.zoom{overflow:hidden;aspect-ratio:4/3;background:#dde5f2}
+.zoom img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+figure:hover .zoom img,figure:focus-within .zoom img{transform:scale(1.12)}
+figcaption{padding:14px 18px;font-weight:500;color:var(--navy);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:12px;list-style:none}
+.chips li{background:var(--white);border:1px solid #dbe3f0;border-radius:50px;padding:9px 20px;font-weight:500;box-shadow:0 4px 12px rgba(11,31,58,.06)}
+.chips li::before{content:"✓ ";color:var(--accent);font-weight:700}
+.jp-grid{display:grid;grid-template-columns:minmax(240px,1fr) 1.4fr;gap:26px;align-items:center}
+.progress{margin-top:16px}
+.bar{height:10px;background:#e3e9f4;border-radius:10px;overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:10px;width:0;transition:width 1.4s ease}
+.progress small{color:var(--muted)}
+
+/* RESOLUTION */
+.resolution{background:var(--navy);color:var(--white)}
+.resolution .section-title{color:var(--white)}
+.res-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:center}
+.video-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.4);background:#000;aspect-ratio:16/9}
+.video-wrap video,.video-wrap iframe{width:100%;height:100%;border:0;display:block}
+.resolution p{color:#c7d4ea;margin-top:14px}
+
+/* GOALS */
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.goal{border-top:5px solid var(--accent)}
+.goal:hover{transform:translateY(-6px)}
+.goal .tag{display:inline-block;background:#fdeaea;color:var(--accent-dark);font-weight:600;font-size:.8rem;padding:4px 12px;border-radius:50px;margin-bottom:12px}
+.goal h4{margin-bottom:8px;font-size:1.15rem}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:30px}
+.contact-list{list-style:none;display:grid;gap:16px;margin-top:10px}
+.contact-list a{text-decoration:none;display:flex;gap:12px;align-items:center;font-weight:500}
+.contact-list a:hover{color:var(--accent-dark)}
+.ico{width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--white);display:grid;place-items:center;flex:none}
+.ico svg{width:20px;height:20px;fill:currentColor}
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:.9rem;color:var(--navy)}
+input,textarea{width:100%;padding:12px 14px;border:1.5px solid #cdd7e8;border-radius:12px;font:inherit;background:#fbfcff;margin-top:5px}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(229,72,77,.18)}
+textarea{min-height:130px;resize:vertical}
+#formMsg{font-weight:500;color:var(--accent-dark);min-height:1.4em}
+
+/* FOOTER */
+footer{background:#07152a;color:#b4c2da;text-align:center;padding:34px 0}
+footer .socials{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
+footer .ico{background:var(--navy-2);transition:.25s}
+footer .ico:hover{background:var(--accent);transform:translateY(-3px)}
+footer small{font-size:.88rem}
+
+/* ANIMATION */
+.fade{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.fade.show{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade{opacity:1;transform:none;transition:none}*{animation:none!important}}
+
+/* RESPONSIVE */
+@media (max-width:860px){
+  .burger{display:block}
+  .nav ul{position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--navy);max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .nav ul.open{max-height:360px;box-shadow:0 14px 20px rgba(0,0,0,.25)}
+  .nav ul a{display:block;padding:14px 5%;border:0}
+  .hero-grid,.about-grid,.jp-grid,.res-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-photo{order:-1;width:200px}
+  section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="logo">Faiq<span>.</span></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <nav aria-label="Main navigation">
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resolution">Resolution</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- 1. HERO -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="fade">
+      <p class="hello">Hello, I'm</p>
+      <h1>M. Faiq <span>Irsyad</span> Ramadhan</h1>
+      <p class="tagline">Network Technician &amp; Japanese Language Learner</p>
+      <p class="intro">I connect people through technology and I am building a bridge to Japan through language. Welcome to my portfolio!</p>
+      <div class="btns">
+        <a href="#skills" class="btn btn-primary">View My Skills</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <!-- REPLACE: images/profile.JPG with your profile photo -->
+    <div class="hero-photo fade">
+      <img src="images/profile.JPG" alt="Portrait of M. Faiq Irsyad Ramadhan" width="320" height="320">
+    </div>
+  </div>
+</section>
+
+<!-- 2. ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title fade">About Me</h2>
+    <div class="about-grid">
+      <div class="card fade">
+        <p>I am an 18-year-old student in grade XII at SMKN 1 Blitar who is passionate about networking technology and the Japanese language. I have hands-on experience in installing WiFi and splicing fiber optic cables, and I am currently learning Japanese using the Minna no Nihongo textbook. My goal is to work in Japan.</p>
+        <ul class="facts" style="margin-top:20px">
+          <li><b>Name:</b> M. Faiq Irsyad Ramadhan</li>
+          <li><b>Age:</b> 18 years old</li>
+          <li><b>School:</b> SMKN 1 Blitar (Grade XII)</li>
+          <li><b>Location:</b> Papungan Village, RT 2 RW 9, Kanigoro, Blitar</li>
+        </ul>
+      </div>
+      <div class="card brand-statement fade">
+        <h3>My Personal Brand</h3>
+        <p>"I am a hardworking young technician who connects networks and cultures. With practical skills and the courage to learn a new language, I am preparing myself to build a career in Japan."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SKILLS -->
+<section id="skills" style="background:#eaeff8">
+  <div class="container">
+    <h2 class="section-title fade">My Skills</h2>
+    <p class="section-sub fade">Practical experience in networking and a growing ability in Japanese.</p>
+
+    <!-- 3a. NETWORKING -->
+    <div class="skills-block fade">
+      <h3>🌐 Networking Skills</h3>
+      <div class="gallery">
+        <!-- REPLACE: images/router.JPG -->
+        <figure>
+          <div class="zoom"><img src="images/router.JPG" alt="Faiq configuring a WiFi router from his phone" loading="lazy"></div>
+          <figcaption>Configuring and setting up a WiFi router</figcaption>
+        </figure>
+        <!-- REPLACE: images/fiber.JPG -->
+        <figure>
+          <div class="zoom"><img src="images/fiber.JPG" alt="Faiq splicing a fiber optic cable with a fusion splicer outdoors" loading="lazy"></div>
+          <figcaption>Splicing fiber optic cable</figcaption>
+        </figure>
+      </div>
+      <ul class="chips">
+        <li>WiFi installation</li>
+        <li>Router configuration</li>
+        <li>Fiber optic splicing</li>
+        <li>Basic troubleshooting</li>
+      </ul>
+    </div>
+
+    <!-- 3b. JAPANESE -->
+    <div class="skills-block fade">
+      <h3><span class="jp">日本語</span> Japanese Language Skills</h3>
+      <div class="jp-grid">
+        <!-- REPLACE: images/minna.JPG -->
+        <figure>
+          <div class="zoom"><img src="images/minna.JPG" alt="Minna no Nihongo textbook on a study desk" loading="lazy"></div>
+          <figcaption>Learning Japanese with Minna no Nihongo</figcaption>
+        </figure>
+        <div class="card">
+          <p>I study Japanese with the <strong>Minna no Nihongo</strong> textbook. I am learning hiragana, katakana, basic grammar, and daily conversation. I practice a little every day because I want to work in Japan and communicate with confidence.</p>
+          <div class="progress" id="progress">
+            <label>Hiragana &amp; Katakana</label>
+            <div class="bar"><i data-w="80%"></i></div>
+            <label>Basic Grammar</label>
+            <div class="bar"><i data-w="55%"></i></div>
+            <label>Daily Conversation</label>
+            <div class="bar"><i data-w="40%"></i></div>
+            <small>Update these numbers to match your real progress.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. RESOLUTION -->
+<section class="resolution" id="resolution">
+  <div class="container">
+    <div class="res-grid">
+      <div class="video-wrap fade" id="videoWrap">
+        <!-- Video is loaded by JS using VIDEO_URL (see script at bottom). -->
+      </div>
+      <div class="fade">
+        <h2 class="section-title">My Resolution</h2>
+        <p>My resolution is to keep improving my networking skills and to master Japanese step by step. I want to pass my exams, earn certifications, and prepare myself for a job in Japan.</p>
+        <p>I believe consistent effort, discipline, and prayer will open the door to my future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. GOALS -->
+<section id="goals">
+  <div class="container">
+    <h2 class="section-title fade">Goals &amp; Vision</h2>
+    <p class="section-sub fade">Small steps today, big dreams tomorrow.</p>
+    <div class="goals">
+      <article class="card goal fade">
+        <span class="tag">Short-term</span>
+        <h4>Graduate &amp; Level Up</h4>
+        <p>Graduate from SMKN 1 Blitar, strengthen my networking skills, and finish the first chapters of Minna no Nihongo.</p>
+      </article>
+      <article class="card goal fade">
+        <span class="tag">Mid-term</span>
+        <h4>Get Certified</h4>
+        <p>Work as a network technician, pass the JLPT N5 and N4 exams, and gain professional experience.</p>
+      </article>
+      <article class="card goal fade">
+        <span class="tag">Long-term</span>
+        <h4>Work in Japan</h4>
+        <p>Build a career in Japan as a skilled technician, and use my experience to support my family and community.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CONTACT -->
+<section id="contact" style="background:#eaeff8">
+  <div class="container">
+    <h2 class="section-title fade">Contact Me</h2>
+    <p class="section-sub fade">Want to work together, ask a question, or just say hello? Send me a message!</p>
+    <div class="contact-grid">
+      <div class="card fade">
+        <h3>Let's connect</h3>
+        <ul class="contact-list">
+          <!-- REPLACE the links below with your real details -->
+          <li><a href="mailto:your.email@example.com"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m2 6 10 8 10-8" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>your.email@example.com</a></li>
+          <li><a href="https://instagram.com/your_username" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.2 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg></span>Instagram: @your_username</a></li>
+          <li><a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9h3.8v11H4.5zM6.4 3.5a2.2 2.2 0 1 1 0 4.400 2.2 2.2 0 0 1 0-4.400zM10.500 9h3.600v1.500c.5-.9 1.800-1.800 3.700-1.800 3.800 0 4.500 2.500 4.500 5.700V20h-3.800v-5c0-1.200 0-2.800-1.700-2.800s-2 1.300-2 2.700V20h-3.800z"/></svg></span>LinkedIn: Faiq Irsyad</a></li>
+        </ul>
+      </div>
+      <form class="card fade" id="contactForm" novalidate>
+        <div><label for="name">Your Name</label><input id="name" name="name" type="text" required autocomplete="name"></div>
+        <div><label for="email">Your Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <button class="btn btn-primary" type="submit">Send Message</button>
+        <p id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="socials">
+      <a class="ico" href="https://instagram.com/your_username" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.2 6a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/></svg></a>
+      <a class="ico" href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 9h3.8v11H4.5zM6.4 3.5a2.2 2.2 0 1 1 0 4.400 2.2 2.2 0 0 1 0-4.400zM10.500 9h3.600v1.500c.5-.9 1.800-1.800 3.700-1.800 3.800 0 4.500 2.500 4.500 5.700V20h-3.800v-5c0-1.200 0-2.800-1.700-2.800s-2 1.300-2 2.700V20h-3.800z"/></svg></a>
+      <a class="ico" href="mailto:your.email@example.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m2 6 10 8 10-8" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+    </div>
+    <small>&copy; <span id="year">2026</span> M. Faiq Irsyad Ramadhan. All rights reserved.</small>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT THESE ===== */
+// Put your video link here later. Works with:
+//  - a YouTube link (https://www.youtube.com/watch?v=XXXX or https://youtu.be/XXXX)
+//  - a video file (my-video.mp4)
+const VIDEO_URL = "https://youtube.com/shorts/2-qiFTYCUeI?si=cHZc4njQFqviuQF1"; // <-- your video link
+const VIDEO_POSTER = "images/poster.JPG"; // <-- poster image for the video
+
+/* ===== VIDEO ===== */
+(function(){
+  const wrap = document.getElementById('videoWrap');
+  const yt = VIDEO_URL.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([\w-]{11})/);
+  if (yt) {
+    // YouTube Shorts are vertical, so use a portrait frame
+    if (/\/shorts\//.test(VIDEO_URL)) {
+      wrap.style.aspectRatio = '9 / 16';
+      wrap.style.maxWidth = '340px';
+      wrap.style.width = '100%';
+      wrap.style.justifySelf = 'center';
+    }
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + yt[1] + '" title="My Resolution video" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+  } else {
+    wrap.innerHTML = '<video controls preload="metadata" poster="' + VIDEO_POSTER + '" aria-label="My Resolution video">' +
+      (VIDEO_URL ? '<source src="' + VIDEO_URL + '" type="video/mp4">' : '') +
+      'Your browser does not support the video tag.</video>';
+  }
+})();
+
+/* ===== IMAGE FALLBACK (shows a simple placeholder if a photo is missing) ===== */
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    img.parentElement.style.display = 'grid';
+    img.parentElement.style.placeItems = 'center';
+    if (!img.parentElement.querySelector('.ph')) {
+      const s = document.createElement('span');
+      s.className = 'ph';
+      s.style.cssText = 'color:#5b6b82;font-size:.9rem;padding:12px;text-align:center';
+      s.textContent = 'Add photo: ' + img.getAttribute('src');
+      img.parentElement.appendChild(s);
+    }
+  }, { once: true });
+});
+
+/* ===== MOBILE MENU ===== */
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+burger.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded', false);
+}));
+
+/* ===== FADE-IN + PROGRESS BARS ===== */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('show');
+      e.target.querySelectorAll && e.target.querySelectorAll('.bar i').forEach(b => b.style.width = b.dataset.w);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: .15 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* ===== ACTIVE NAV LINK ===== */
+const links = [...menu.querySelectorAll('a')];
+const secObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('main section[id]').forEach(s => secObs.observe(s));
+
+/* ===== CONTACT FORM (opens the visitor's email app) ===== */
+const MY_EMAIL = "your.email@example.com"; // <-- change to your email
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, msg = document.getElementById('formMsg');
+  const name = f.name.value.trim(), email = f.email.value.trim(), text = f.message.value.trim();
+  if (!name || !/^\S+@\S+\.\S+$/.test(email) || !text) {
+    msg.textContent = 'Please fill in all fields with a valid email.'; return;
+  }
+  const body = encodeURIComponent(text + '\n\nFrom: ' + name + ' (' + email + ')');
+  window.location.href = 'mailto:' + MY_EMAIL + '?subject=' + encodeURIComponent('Portfolio message from ' + name) + '&body=' + body;
+  msg.textContent = 'Thank you! Your email app should open now.';
+  f.reset();
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
