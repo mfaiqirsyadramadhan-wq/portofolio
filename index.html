@@ -99,8 +99,8 @@ figcaption{padding:14px 18px;font-weight:500;color:var(--navy);font-size:.95rem}
 .resolution{background:var(--navy);color:var(--white)}
 .resolution .section-title{color:var(--white)}
 .res-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:center}
-.video-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.4);background:#000;aspect-ratio:9/16;width:100%;max-width:340px;justify-self:center}
-.video-wrap video{width:100%;height:100%;border:0;display:block;object-fit:contain;background:#000}
+.video-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.4);background:#000;aspect-ratio:16/9}
+.video-wrap video,.video-wrap iframe{width:100%;height:100%;border:0;display:block}
 .resolution p{color:#c7d4ea;margin-top:14px}
 
 /* GOALS */
@@ -265,10 +265,7 @@ footer small{font-size:.88rem}
   <div class="container">
     <div class="res-grid">
       <div class="video-wrap fade" id="videoWrap">
-        <video controls playsinline preload="metadata" poster="images/poster.JPG" aria-label="My Resolution video">
-          <source src="images/faiq.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+        <!-- Video is loaded by JS using VIDEO_URL (see script at bottom). -->
       </div>
       <div class="fade">
         <h2 class="section-title">My Resolution</h2>
@@ -343,6 +340,29 @@ footer small{font-size:.88rem}
 </footer>
 
 <script>
+/* ===== EDIT THESE ===== */
+const VIDEO_URL = "https://youtube.com/shorts/5D1yX9_n4o0?si=2P3TCxilFdwYecBb";
+const VIDEO_POSTER = "images/poster.JPG";
+
+/* ===== VIDEO ===== */
+(function(){
+  const wrap = document.getElementById('videoWrap');
+  const yt = VIDEO_URL.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([\w-]{11})/);
+  if (yt) {
+    if (/\/shorts\//.test(VIDEO_URL)) {
+      wrap.style.aspectRatio = '9 / 16';
+      wrap.style.maxWidth = '340px';
+      wrap.style.width = '100%';
+      wrap.style.justifySelf = 'center';
+    }
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + yt[1] + '" title="My Resolution video" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+  } else {
+    wrap.innerHTML = '<video controls preload="metadata" poster="' + VIDEO_POSTER + '" aria-label="My Resolution video">' +
+      (VIDEO_URL ? '<source src="' + VIDEO_URL + '" type="video/mp4">' : '') +
+      'Your browser does not support the video tag.</video>';
+  }
+})();
+
 /* ===== IMAGE FALLBACK ===== */
 document.querySelectorAll('img').forEach(img => {
   img.addEventListener('error', () => {
